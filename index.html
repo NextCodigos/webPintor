@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lujo y Espacio • Pintura y Revestimientos en Benidorm</title>
+  <meta name="description" content="Especialistas en pintura, decoración y revestimientos de fachadas en Benidorm y alrededores. 25 años de experiencia. Calidad-precio imbatible."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --astro-blue: #60a5fa;
+      --astro-blue-dark: #3b82f6;
+      --bg: #ffffff;
+      --bg-soft: #f8f9fa;
+      --fg: #111827;
+      --fg-soft: #4b5563;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      color-scheme: light;
+    }
+
+    [data-theme="dark"] {
+      --astro-blue: #7dd3fc;
+      --astro-blue-dark: #60a5fa;
+      --bg: #0f1117;
+      --bg-soft: #1e293b;
+      --fg: #e2e8f0;
+      --fg-soft: #94a3b8;
+      --border: #334155;
+      --card-bg: #1e293b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+      color-scheme: dark;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: var(--astro-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 1.25rem 5%;
+    }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--astro-blue);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--fg-soft);
+    }
+
+    .theme-toggle:hover { color: var(--astro-blue); }
+
+    .hero {
+      background: var(--bg-soft);
+      padding: 10rem 5% 8rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 4.8rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero .lead {
+      font-size: 1.4rem;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      color: var(--fg-soft);
+    }
+
+    .pill {
+      background: rgba(96,165,250,0.1);
+      color: var(--astro-blue);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin: 0.5rem;
+      border: 1px solid rgba(96,165,250,0.2);
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .btn {
+      background: var(--astro-blue);
+      color: white !important;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(96,165,250,0.2);
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: var(--astro-blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--astro-blue);
+      color: var(--astro-blue) !important;
+    }
+
+    .btn-outline:hover {
+      background: var(--astro-blue);
+      color: white !important;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+    section { padding: 7rem 0; }
+
+    h2 { font-size: 2.8rem; font-weight: 700; text-align: center; margin-bottom: 3rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card:hover {
+      border-color: var(--astro-blue);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .card-content { padding: 2rem; }
+
+    .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+
+    .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-md); }
+
+    .gallery-item img { width: 100%; height: auto; display: block; }
+
+    /* Formulario */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--astro-blue);
+      box-shadow: 0 0 0 3px rgba(96,165,250,0.2);
+    }
+
+    button[type="submit"] {
+      background: var(--astro-blue);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--astro-blue-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Mapa */
+    .map-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cta {
+      background: var(--astro-blue);
+      color: white;
+      text-align: center;
+      padding: 8rem 5%;
+    }
+
+    .cta h2 { color: white; }
+
+    footer {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      color: var(--fg-soft);
+      text-align: center;
+      padding: 4rem 5% 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 7rem 5% 5rem; }
+      h2 { font-size: 2.3rem; }
+      section { padding: 5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <script is:inline>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <header>
+    <nav>
+      <div class="logo">Lujo y Espacio</div>
+      <button class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Pintura y Revestimientos en Benidorm</h1>
+      <p class="lead">
+        Decoración interior y exterior • Fachadas • 25 años de experiencia<br>
+        Zona: Benidorm y alrededores
+      </p>
+
+      <div class="pills">
+        <div class="pill">Fachadas Interior y Exterior</div>
+        <div class="pill">Todo tipo de decoración</div>
+        <div class="pill">Rehabilitación de fachadas</div>
+        <div class="pill">Calidad-precio imbatible</div>
+        <div class="pill">25 años nos avalan</div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="tel:+34618562958" class="btn">Llamar ahora: 618 562 958</a>
+        <a href="https://wa.me/34618562958?text=Hola%21%20Me%20gustar%C3%ADa%20un%20presupuesto%20sin%20compromiso%20para%20pintura%20o%20revestimientos%20en%20Benidorm" class="btn btn-outline" style="margin-left:1rem;">Presupuesto por WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Nuestros Servicios</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-content">
+            <h3>Fachadas exteriores</h3>
+            <p>Revestimientos monocapa, morteros acrílicos/siloxánicos, SATE, pintura mineral, impermeabilizaciones, eliminación de gotelé, reparación de grietas y humedades.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>Pintura y decoración interior</h3>
+            <p>Pintura plástica lisa, gotelé, efectos decorativos, papel pintado, estucos venecianos, patinas, microcemento, pintura epoxi para suelos.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>Reformas y rehabilitación</h3>
+            <p>Rehabilitación integral de viviendas, locales comerciales y comunidades en Benidorm y alrededores. Acabados de alta calidad.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>Calidad – Precio</h3>
+            <p>Materiales premium. Presupuestos claros sin sorpresas. Honestidad y trabajos duraderos desde el primer día.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Algunos de nuestros trabajos</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="IMG-20260128-WA0004.jpg" alt="Fachada antes/después">
+        </div>
+        <div class="gallery-item">
+          <img src="IMG-20260128-WA0007.jpg" alt="Rehabilitación fachada">
+        </div>
+        <div class="gallery-item">
+          <img src="IMG-20260128-WA0008.jpg" alt="Decoración interior">
+        </div>
+        <div class="gallery-item">
+          <img src="IMG-20260128-WA0009.jpg" alt="Paredes decorativas">
+        </div>
+        <div class="gallery-item">
+          <img src="IMG-20260128-WA0012.jpg" alt="Paredes decorativas">
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contacto">
+      <h2>Contacto</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 3rem; color:var(--fg-soft);">
+        Rellena el formulario y se abrirá tu cliente de correo para enviarnos tu consulta. ¡Respuesta rápida garantizada!
+      </p>
+
+      <form action="mailto:juanmanuelmorenocano16@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <input type="tel" name="telefono" placeholder="Tu teléfono (opcional)">
+        <textarea name="mensaje" rows="6" placeholder="Cuéntanos sobre tu proyecto (fachada, interior, reforma...)" required></textarea>
+        <button type="submit">Enviar consulta por email</button>
+      </form>
+
+      <div style="margin: 4rem auto 0; max-width:800px;">
+        <h3 style="text-align:center; margin-bottom:1.5rem;">Nuestra zona de trabajo</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12499.999999999998!2d-0.140000!3d38.541200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd621d6f8b0f0f0f%3A0x1b0f0f0f0f0f0f0f!2sBenidorm%2C%20Alicante%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1730000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:3rem;">
+        <p style="margin-bottom:1.5rem;">O contáctanos directamente:</p>
+        <a href="tel:+34618562958" class="btn" style="background:white; color:var(--astro-blue); margin:0.5rem;">Llamar: 618 562 958</a>
+        <a href="https://wa.me/34618562958?text=Hola%21%20Quiero%20un%20presupuesto%20para%20pintura%20o%20revestimientos%20en%20Benidorm" class="btn btn-outline" style="margin:0.5rem;">WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>¿Listo para empezar tu proyecto?</h2>
+        <p style="font-size:1.35rem; max-width:720px; margin:0 auto 2.5rem; opacity:0.95;">
+          Presupuesto sin compromiso • Visita gratuita<br>
+          Tel: 618 562 958 • Email: juanmanuelmorenocano16@gmail.com
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Lujo y Espacio • Benidorm y alrededores<br>
+    25 años creando espacios con calidad y estilo • Tel: 618 562 958</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.theme-toggle');
+    
+    function updateIcon(theme) {
+      toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon(next);
+    });
+
+    updateIcon(document.documentElement.getAttribute('data-theme'));
+  </script>
+
+</body>
+</html>
